@@ -1,0 +1,41 @@
+/* NULLED DEFAULT STYLES */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+body {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+a {
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.wrapper {
+  padding: 0 2%;
+}
+
+@import "./media.scss";
