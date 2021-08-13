@@ -28,8 +28,8 @@ function Auth() {
   const [disabled, setDisabled] = useState(false);
 
   // Палю что внутри стейтов
-  console.log(form);
-  console.log(registrationForm);
+  // console.log(form);
+  // console.log(registrationForm);
 
   // Всякие штуки которые идут из бэка
   const {
@@ -43,6 +43,9 @@ function Auth() {
     setPasswordError,
   } = useHttp();
   const message = useMessage();
+  if (error) {
+    console.log("IF ERROR", error);
+  }
 
   // Ошибки идут в консоль, хз как вывести на фронт
   useEffect(() => {

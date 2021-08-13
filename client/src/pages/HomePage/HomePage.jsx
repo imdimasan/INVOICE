@@ -7,7 +7,7 @@ function HomePage() {
   return (
     <div className="wrapper">
       <Text variant="h1" className="page__title">
-        Home Page
+        Create a бухгалтерский document easy!
       </Text>
       <Auth />
     </div>
