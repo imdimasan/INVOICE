@@ -26,11 +26,8 @@ router.post("/save", auth, async (req, res) => {
       notice,
       contractdate,
       contractname,
-      owner: req.user.userId,
+      owner: req.user.Id,
     });
-    await client.save();
-    res.status(201).json({ client });
-
     await client.save();
     res.status(201).json({ client });
   } catch (e) {
@@ -40,8 +37,8 @@ router.post("/save", auth, async (req, res) => {
 
 router.get("/", auth, async (req, res) => {
   try {
-    const links = await Link.find({ owner: req.user.Id });
-    res.json(links);
+    const clients = await Client.find({ owner: req.user.userId });
+    res.json(clients);
   } catch (e) {
     res.status(500).json({ message: "Nothing work :(" });
   }

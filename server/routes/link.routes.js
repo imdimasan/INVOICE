@@ -28,7 +28,7 @@ router.post("/generate", auth, async (req, res) => {
     });
 
     await link.save();
-
+    console.log(res);
     res.status(201).json({ link });
   } catch (e) {
     res.status(500).json({ message: "Что-то пошло не так, попробуйте снова" });

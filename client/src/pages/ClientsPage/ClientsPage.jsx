@@ -5,24 +5,38 @@ import { Text, LinksList } from "components";
 import {Loader} from "components";
 
 function ClientPage() {
-const [links, setLinks] = useState([])
+// const [links, setLinks] = useState([])
+const [clients, setClients] = useState([])
 const {loading, request} = useHttp()
 const {token} = useContext(AuthContext)
 
 
-const getLink = useCallback(async () => {
+// const getLink = useCallback(async () => {
+//   try {
+//     const fetched = await request(`/api/link/`, "GET", null, {
+//       Authorization: `Bearer ${token}`,
+//     });
+//     setLinks(fetched);
+//     console.log(fetched);
+//   } catch (e) {}
+// }, [token, request]);
+
+// useEffect(() => {
+//   getLink();
+// }, [getLink]);
+const getClients = useCallback(async () => {
   try {
-    const fetched = await request(`/api/link/`, "GET", null, {
+    const fetched = await request(`/api/client/`, "GET", null, {
       Authorization: `Bearer ${token}`,
     });
-    setLinks(fetched);
+    setClients(fetched);
     console.log(fetched);
   } catch (e) {}
 }, [token, request]);
 
 useEffect(() => {
-  getLink();
-}, [getLink]);
+  getClients();
+}, [getClients]);
 
 
 if (loading) {
@@ -35,7 +49,8 @@ if (loading) {
       <Text variant="h1" className="page__title">
         Account Clients Page
       </Text>
-      {!loading && <LinksList links={links}/>}
+      {/* {!loading && <LinksList links={links}/>} */}
+      {!loading && <LinksList clients={clients}/>}
     </>
   );
 }

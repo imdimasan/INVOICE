@@ -51,7 +51,7 @@ function AddPage() {
     bank: "",
     bic: "",
     notice: "",
-    contractdate: "",
+    contractdate: formattedDate,
     contractname: "",
   });
   const changeClient = (event) => {
@@ -136,16 +136,10 @@ function AddPage() {
             type="date"
             id="contractdate"
             name="contractdate"
-            value={formattedDate}
+            value={clientinfo.contractdate? clientinfo.contractdate : formattedDate}
             onChange={changeClient}
           />
-          {/* <DateTime
-            onChange={changeClient}
-            date={changeClient}
-            name="contractdate"
-            id="contractdate"
-            value={clientinfo.contractdate}
-          /> */}
+          
         </div>
         <div className="client__button">
           <Buttons onClick={saveClient}>Add New Client</Buttons>
