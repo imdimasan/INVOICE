@@ -61,7 +61,9 @@ span {
 .client__footer_notice {
   background: #5e5e5e;
   color: #fff;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   padding-bottom: 1rem;
+  &:last-child {
+    border-bottom-left-radius: 0.9rem;
+    border-bottom-right-radius: 0.9rem;
+  }
 }

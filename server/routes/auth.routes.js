@@ -28,7 +28,16 @@ router.post(
         });
       }
 
-      const { email, password, organization, unp, bank, bic } = req.body;
+      const {
+        email,
+        password,
+        organization,
+        unp,
+        bankaccount,
+        bankname,
+        legaladdress,
+        bic,
+      } = req.body;
       const candidate = await User.findOne({ email });
       const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -45,7 +54,9 @@ router.post(
         password: hashedPassword,
         organization,
         unp,
-        bank,
+        legaladdress,
+        bankaccount,
+        bankname,
         bic,
       });
       await user.save();

@@ -2,17 +2,20 @@ const { Router } = require("express");
 const Client = require("../models/Client");
 const router = Router();
 const auth = require("../middleware/auth.middleware");
+const { ObjectId } = require("mongodb");
 
 router.post("/save", auth, async (req, res) => {
   console.log("REQUEST", req.body);
-
   try {
     const {
       organization,
       unp,
-      bank,
+      legaladdress,
+      bankaccount,
+      bankname,
       bic,
-      notice,
+      noticeact,
+      noticeinvoice,
       contractdate,
       contractname,
       owner,
@@ -21,13 +24,18 @@ router.post("/save", auth, async (req, res) => {
     const client = new Client({
       organization,
       unp,
-      bank,
+      legaladdress,
+      bankaccount,
+      bankname,
       bic,
-      notice,
+      noticeact,
+      noticeinvoice,
       contractdate,
       contractname,
-      owner: req.user.Id,
+      owner: req.user.userId,
     });
+    console.log(req.user.userId);
+    console.log(req.user);
     await client.save();
     res.status(201).json({ client });
   } catch (e) {
@@ -50,6 +58,17 @@ router.get("/:id", auth, async (req, res) => {
     res.json(client);
   } catch (e) {
     res.status(500).json({ message: "Nothing work :(" });
+  }
+});
+router.delete("/remove/:id", auth, async (req, res) => {
+  try {
+    const client = await Client.deleteOne({ _id: ObjectId(req.params.id) });
+    console.log(client);
+    console.log(req.params.id);
+    res.json(client);
+  } catch (e) {
+    res.status(500).json({ message: "Nothing work :(" });
+    console.log(e);
   }
 });
 

@@ -5,7 +5,9 @@ const schema = new Schema({
   password: { type: String, required: true },
   organization: { type: String, required: true },
   unp: { type: String, required: true, uniquie: true },
-  bank: { type: String, required: true },
+  legaladdress: { type: String, required: true },
+  bankaccount: { type: String, required: true },
+  bankname: { type: String, required: true },
   bic: { type: String },
   links: [
     {

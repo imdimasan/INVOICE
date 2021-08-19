@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 function NewClientPage() {
   const [client, setClient] = useState(null);
   const clientId = useParams().id;
-  console.log(clientId);
   const { request, loading } = useHttp();
   const { token } = useContext(AuthContext);
 

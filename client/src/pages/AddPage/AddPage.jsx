@@ -13,20 +13,19 @@ function AddPage() {
   const date = Date.now();
   const formattedDate = format(date, "yyyy-MM-dd");
 
-  const saveHandler = async () => {
-    try {
-      const data = await request(
-        "/api/link/generate",
-        "POST",
-        {
-          from: link,
-        },
-        { Authorization: `Bearer ${auth.token}` }
-      );
-      console.log(data);
-      history.push(`/detail/${data.link._id}`);
-    } catch (error) {}
-  };
+  // const saveHandler = async () => {
+  //   try {
+  //     const data = await request(
+  //       "/api/link/generate",
+  //       "POST",
+  //       {
+  //         from: link,
+  //       },
+  //       { Authorization: `Bearer ${auth.token}` }
+  //     );
+  //     history.push(`/detail/${data.link._id}`);
+  //   } catch (error) {}
+  // };
   const saveClient = async () => {
     try {
       const data = await request(
@@ -37,35 +36,34 @@ function AddPage() {
       );
       history.push(`/newclient/${data.client._id}`);
 
-      console.log(data);
     } catch (error) {
-      console.log(error);
     }
   };
 
-  const [link, setLink] = useState();
+  // const [link, setLink] = useState();
 
   const [clientinfo, setClientInfo] = useState({
     organization: "",
     unp: "",
-    bank: "",
+    legaladdress: "",
+    bankaccount: "",
+    bankname: "",
     bic: "",
-    notice: "",
+    noticeact: "",
+    noticeinvoice: "",
     contractdate: formattedDate,
     contractname: "",
   });
   const changeClient = (event) => {
     setClientInfo({ ...clientinfo, [event.target.name]: event.target.value });
   };
-  console.log(link);
-  console.log(clientinfo);
 
   return (
     <div className="wrapper">
       <Text variant="h1" className="page__title">
         Add new client
       </Text>
-      <div className="link__wrapper">
+      {/* <div className="link__wrapper">
         <div className="link__input">
           <Input
             label="Введите ссыль"
@@ -79,7 +77,7 @@ function AddPage() {
         <div className="link__button">
           <Buttons onClick={saveHandler}>Short Link</Buttons>
         </div>
-      </div>
+      </div> */}
 
       <div className="client__wrapper">
         <div className="client__input">
@@ -93,18 +91,34 @@ function AddPage() {
           />
           <Input
             label="УНП"
-            type="text"
+            type="number"
             id="unp"
             name="unp"
             value={clientinfo.unp}
             onChange={changeClient}
           />
           <Input
-            label="Реквизиты"
+            label="Юридический адрес"
             type="text"
-            id="bank"
-            name="bank"
-            value={clientinfo.bank}
+            id="legaladdress"
+            name="legaladdress"
+            value={clientinfo.legaladdress}
+            onChange={changeClient}
+          />
+          <Input
+            label="Расчетный счет IBAN"
+            type="text"
+            id="bankaccount"
+            name="bankaccount"
+            value={clientinfo.bankaccount}
+            onChange={changeClient}
+          />
+          <Input
+            label="Название банка"
+            type="text"
+            id="bankname"
+            name="bankname"
+            value={clientinfo.bankname}
             onChange={changeClient}
           />
           <Input
@@ -116,11 +130,19 @@ function AddPage() {
             onChange={changeClient}
           />
           <Input
-            label="Примечание"
+            label="Примечание для акта выполненных работ"
             type="text"
-            id="notice"
-            name="notice"
-            value={clientinfo.notice}
+            id="noticeact"
+            name="noticeact"
+            value={clientinfo.noticeact}
+            onChange={changeClient}
+          />
+          <Input
+            label="Примечание для счет-фактуры"
+            type="text"
+            id="noticeinvoice"
+            name="noticeinvoice"
+            value={clientinfo.noticeinvoice}
             onChange={changeClient}
           />
           <Input

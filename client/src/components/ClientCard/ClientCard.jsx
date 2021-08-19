@@ -16,11 +16,19 @@ function ClientCard({ client }) {
         </div>
         <div className="client__body">
           <div className="client__body_bank">
-            <span>Банковские реквизиты</span>
-            <p>{client.bank}</p>
+            <span>Юридический адрес</span>
+            <p>{client.legaladdress}</p>
           </div>
           <div className="client__body_bank">
-            <span>IBAN</span>
+            <span>Расчетный счет IBAN</span>
+            <p>{client.bankaccount}</p>
+          </div>
+          <div className="client__body_bank">
+            <span>Название банка</span>
+            <p>{client.bankname}</p>
+          </div>
+          <div className="client__body_bank">
+            <span>БИК</span>
             <p>{client.bic}</p>
           </div>
           <div className="client__body_contract">
@@ -34,8 +42,12 @@ function ClientCard({ client }) {
         </div>
         <div className="client__footer">
           <div className="client__footer_notice">
-            <span>Примечание</span>
-            <p>{client.notice}</p>
+            <span>Примечание для акта выполненных работ</span>
+            <p>{client.noticeact}</p>
+          </div>
+          <div className="client__footer_notice">
+            <span>Примечание для счета-фактуры</span>
+            <p>{client.noticeinvoice}</p>
           </div>
         </div>
       </div>

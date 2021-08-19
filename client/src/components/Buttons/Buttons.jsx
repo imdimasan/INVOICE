@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 import "./Buttons.scss";
 
-function Buttons({ children, variant, color, onClick, disabled }) {
+function Buttons({ children, variant, color, onClick, disabled, startIcon}) {
   return (
     <Button
       variant={variant ? variant : "contained"}
@@ -10,6 +10,7 @@ function Buttons({ children, variant, color, onClick, disabled }) {
       onClick={onClick}
       className="buttons"
       disabled={disabled}
+      startIcon={startIcon}
     >
       {children}
     </Button>

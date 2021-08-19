@@ -20,16 +20,14 @@ function Auth() {
     password: "",
     organization: "",
     unp: "",
-    bank: "",
+    legaladdress: "",
+    bankaccount: "",
+    bankname: "",
     bic: "",
   });
 
   // Отключаю инпуты регистрации при 201 ответе
   const [disabled, setDisabled] = useState(false);
-
-  // Палю что внутри стейтов
-  // console.log(form);
-  // console.log(registrationForm);
 
   // Всякие штуки которые идут из бэка
   const {
@@ -45,6 +43,7 @@ function Auth() {
   const message = useMessage();
   if (error) {
     console.log("IF ERROR", error);
+    console.log(registrationForm);
   }
 
   // Ошибки идут в консоль, хз как вывести на фронт
@@ -63,6 +62,7 @@ function Auth() {
     }
   };
   const changeRegistration = (event) => {
+    console.log(registrationForm)
     setRegistrationForm({
       ...registrationForm,
       [event.target.name]: event.target.value,
@@ -166,12 +166,30 @@ function Auth() {
           onChange={changeRegistration}
         />
         <Input
-          label="Реквизиты"
+          label="Юридический адрес"
           type="text"
-          id="bank"
+          id="legaladdress"
+          name="legaladdress"
           disabled={disabled}
-          name="bank"
-          value={registrationForm.bank}
+          value={registrationForm.legaladdress}
+          onChange={changeRegistration}
+        />
+        <Input
+          label="Название банка"
+          type="text"
+          id="bankname"
+          name="bankname"
+          disabled={disabled}
+          value={registrationForm.bankname}
+          onChange={changeRegistration}
+        />
+        <Input
+          label="Расчетный счет банка IBAN"
+          type="text"
+          id="bankaccount"
+          name="bankaccount"
+          disabled={disabled}
+          value={registrationForm.bankaccount}
           onChange={changeRegistration}
         />
         <Input
@@ -183,6 +201,8 @@ function Auth() {
           disabled={disabled}
           onChange={changeRegistration}
         />
+
+        
       </div>
       <div className="buttons__wrapper">
         <Buttons
