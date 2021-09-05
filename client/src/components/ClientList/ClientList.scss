@@ -1,0 +1,60 @@
+$white: #ffffff;
+$whitegray: #e0e0e0;
+$black: #000000;
+$middlegray: #d4d4d4;
+$lightgray: #f5f5f5;
+$darkgray: #1f1f1f;
+
+table {
+  width: 100%;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  margin: auto;
+  padding: 2% 10%;
+  text-align: right;
+  thead {
+    th {
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+  td {
+    padding: 0.2rem 1rem;
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: $lightgray;
+        color: $black;
+      }
+    }
+    td,
+    th {
+      &:nth-child(2) {
+        text-align: center;
+      }
+    }
+    td,
+    th {
+      &:nth-child(3) {
+        text-align: left;
+      }
+    }
+    td,
+    th {
+      &:nth-child(4) {
+        text-align: center;
+      }
+    }
+  }
+}
+.buttons {
+  margin: 1rem auto !important;
+}
+
+@media (max-width: 575.98px) {
+  table {
+    padding: 2%;
+  }
+}

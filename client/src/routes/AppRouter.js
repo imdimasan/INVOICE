@@ -7,6 +7,7 @@ import {
   ClientsPage,
   NewClientPage,
   NewLinkPage,
+  CreateDocument,
 } from "pages";
 
 function AppRouter({ isAuthenticated }) {
@@ -24,13 +25,16 @@ function AppRouter({ isAuthenticated }) {
           <Route path={pageRoutes.CLIENTS}>
             <ClientsPage />
           </Route>
+          <Route path={pageRoutes.CREATE}>
+            <CreateDocument />
+          </Route>
           <Route path={pageRoutes.NEWCLIENT}>
             <NewClientPage />
           </Route>
           <Route path={pageRoutes.NEWLINK}>
             <NewLinkPage />
           </Route>
-          <Redirect exact from="/" to={pageRoutes.ADD} />
+          <Redirect exact from="/" to={pageRoutes.CREATE} />
           <Route>
             <Page404 />
           </Route>

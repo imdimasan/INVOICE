@@ -13,19 +13,6 @@ function AddPage() {
   const date = Date.now();
   const formattedDate = format(date, "yyyy-MM-dd");
 
-  // const saveHandler = async () => {
-  //   try {
-  //     const data = await request(
-  //       "/api/link/generate",
-  //       "POST",
-  //       {
-  //         from: link,
-  //       },
-  //       { Authorization: `Bearer ${auth.token}` }
-  //     );
-  //     history.push(`/detail/${data.link._id}`);
-  //   } catch (error) {}
-  // };
   const saveClient = async () => {
     try {
       const data = await request(
@@ -39,8 +26,6 @@ function AddPage() {
     } catch (error) {
     }
   };
-
-  // const [link, setLink] = useState();
 
   const [clientinfo, setClientInfo] = useState({
     organization: "",
@@ -63,21 +48,6 @@ function AddPage() {
       <Text variant="h1" className="page__title">
         Add new client
       </Text>
-      {/* <div className="link__wrapper">
-        <div className="link__input">
-          <Input
-            label="Введите ссыль"
-            type="text"
-            id="link"
-            value={link}
-            defaultValue=""
-            onChange={(e) => setLink(e.target.value)}
-          />
-        </div>
-        <div className="link__button">
-          <Buttons onClick={saveHandler}>Short Link</Buttons>
-        </div>
-      </div> */}
 
       <div className="client__wrapper">
         <div className="client__input">

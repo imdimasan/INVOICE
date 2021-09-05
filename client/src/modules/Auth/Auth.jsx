@@ -24,6 +24,7 @@ function Auth() {
     bankaccount: "",
     bankname: "",
     bic: "",
+    pro: false
   });
 
   // Отключаю инпуты регистрации при 201 ответе

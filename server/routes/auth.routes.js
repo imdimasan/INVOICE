@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const router = Router();
+const { ObjectId } = require("mongodb");
 
 // REGISTRATION /api/auth/register
 router.post(
@@ -37,6 +38,7 @@ router.post(
         bankname,
         legaladdress,
         bic,
+        pro,
       } = req.body;
       const candidate = await User.findOne({ email });
       const hashedPassword = await bcrypt.hash(password, 12);
@@ -58,6 +60,7 @@ router.post(
         bankaccount,
         bankname,
         bic,
+        pro,
       });
       await user.save();
       res.status(201).json({ message: "[OK] Пользователь зарегистрирован" });
@@ -105,7 +108,7 @@ router.post(
 
       // Авторизация
       const token = jwt.sign({ userId: user.id }, config.get("secret"), {
-        expiresIn: "1h",
+        expiresIn: "365 days",
       });
       res.json({ token, userId: user.id });
     } catch (error) {
@@ -113,5 +116,16 @@ router.post(
     }
   }
 );
+
+const auth = require("../middleware/auth.middleware");
+
+router.get("/info/:id", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ message: "Nothing work :(" });
+  }
+});
 
 module.exports = router;

@@ -20,6 +20,16 @@
       color: #737373;
       padding: 1rem;
     }
+    &[type="number"] {
+      font-size: 1.5rem;
+      color: #737373;
+      padding: 1rem;
+    }
+    &[type="text"] {
+      font-size: 1.5rem;
+      color: #737373;
+      padding: 1rem;
+    }
   }
   #contractdate-label {
     font-size: 2rem;

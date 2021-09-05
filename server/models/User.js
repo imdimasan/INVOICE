@@ -9,6 +9,7 @@ const schema = new Schema({
   bankaccount: { type: String, required: true },
   bankname: { type: String, required: true },
   bic: { type: String },
+  pro: { type: Boolean },
   links: [
     {
       type: Types.ObjectId,

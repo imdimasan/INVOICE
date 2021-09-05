@@ -20,15 +20,24 @@
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
+    .header__menu__logout {
+      line-height: 0;
+    }
   }
 }
-.header__logout {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  a {
-    color: #fff;
+
+@media (max-width: 575.98px) {
+  .header__menu__item {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    white-space: nowrap;
+    line-height: 2rem;
+  }
+  .header menu li {
+    padding: 0.5rem 1rem 0.5rem;
+  }
+  .header__menu__logout {
+    line-height: 1rem;
   }
 }

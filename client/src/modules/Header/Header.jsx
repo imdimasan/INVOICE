@@ -3,6 +3,7 @@ import { pageRoutes } from "constants/pageRoutes";
 import { AuthContext } from "context/AuthContext";
 import { useContext } from "react";
 import { useHistory } from "react-router";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import "./Header.scss";
 
 function Header({ isAuthenticated }) {
@@ -21,15 +22,16 @@ function Header({ isAuthenticated }) {
       <div className="wrapper header">
         <div className="header__menu">
           <menu>
-            {/* <li>
-            <NavigationLink
-              href={pageRoutes.HOME}
-              className={"header__menu__item"}
-              title={"Go to Home Page"}
-            >
-              Home
-            </NavigationLink>
-          </li> */}
+
+          <li>
+              <NavigationLink
+                href={pageRoutes.CREATE}
+                className={"header__menu__item"}
+                title={"Create document with one click"}
+              >
+                Create Doc
+              </NavigationLink>
+            </li>
             <li>
               <NavigationLink
                 href={pageRoutes.ADD}
@@ -48,13 +50,19 @@ function Header({ isAuthenticated }) {
                 My clients
               </NavigationLink>
             </li>
+            <li>
+            <NavigationLink href="" className={"header__menu__item header__menu__logout"} onClick={logoutHandler}>
+            <ExitToAppIcon fontSize={"large"}/>
+          </NavigationLink>
+            </li>
+            
           </menu>
         </div>
-        <div className="header__logout">
+        {/* <div className="header__logout">
           <NavigationLink href="#" onClick={logoutHandler}>
             Выйти
           </NavigationLink>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -71,7 +79,6 @@ function Header({ isAuthenticated }) {
             Home
           </NavigationLink>
         </li>
-        {/* <li><NavigationLink href={pageRoutes.ADD} className={"header__menu__item"} title={"Go to Add Page"}>Add Page</NavigationLink></li> */}
       </menu>
     </div>
   );
