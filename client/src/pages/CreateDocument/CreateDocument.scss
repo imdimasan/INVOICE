@@ -260,6 +260,9 @@ p {
 }
 
 .worknservice {
+  .input {
+    margin: 0 !important;
+  }
   label {
     display: none;
     & + .MuiInput-formControl {
@@ -271,7 +274,10 @@ p {
   }
   .MuiInput-underline {
     &:before {
-      border-bottom: 0;
+      display: none !important;
+    }
+    &:after {
+      display: none !important;
     }
   }
 }

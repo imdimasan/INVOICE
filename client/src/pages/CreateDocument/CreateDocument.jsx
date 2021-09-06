@@ -113,10 +113,10 @@ function CreateDocument () {
 
       const element = document.getElementById("element-to-print");
       const opt = {
-        margin: 0.2,
+        margin: 0.3,
         filename: `${clientinfo.unp}-${pdfDate}.pdf`,
         image: { type: "jpeg", quality: 1 },
-        // html2canvas: { scale: 2 },
+        // html2canvas: { scale:1 },
         jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
       };
     
@@ -285,6 +285,7 @@ function CreateDocument () {
               <p>1</p>
             </div>
             <div className="doc__body__service col-2 worknservice">
+              
             <Input
             label=" "
             type="text"
