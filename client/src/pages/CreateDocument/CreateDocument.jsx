@@ -42,12 +42,20 @@ function CreateDocument () {
     const [amount, setAmount] = useState ({
       amount: 0.00
     })
+    const [worknservice, setWorknService] = useState ("")
+
+
     const changeDate = (event) => {
       setDocDate({ ...docDate, [event.target.name]: event.target.value });
     };
     const changeAmount = (event) => {
       setAmount({ ...amount, [event.target.name]: event.target.type === 'number' ? parseFloat(event.target.value) : event.target.value});
     };
+
+    const changeWorknService = (event) => {
+      setWorknService(event.target.value)
+    }
+
     const rubles = require("rubles").rubles
     const textAmount = rubles(amount.amount.toFixed(2)) 
 
@@ -186,13 +194,9 @@ function CreateDocument () {
         <Buttons className="main__buttons_btn" onClick={()=> {setDocType("Счет фактура")}}>Счет-фактура</Buttons>
         </div>
 
-        <div className="main__services">
-        <Buttons className="main__buttons_btn">Продвижение</Buttons>
-        <Buttons className="main__buttons_btn">Реклама</Buttons>
-        <Buttons className="main__buttons_btn">Пополнение бюджета</Buttons>
-        <Buttons className="main__buttons_btn">Разработка ПО</Buttons>
-
-        </div>
+        {/* <div className="main__services">
+        <Buttons className="main__buttons_btn">Услуга</Buttons>
+        </div> */}
 
         <div className="main__date">
           <Input
@@ -280,12 +284,14 @@ function CreateDocument () {
             <div className="doc__body__number col-1">
               <p>1</p>
             </div>
-            <div className="doc__body__service col-2">
+            <div className="doc__body__service col-2 worknservice">
             <Input
-            label="Наименование работ / услуг ..."
+            label=" "
             type="text"
-            id="workiservices"
-            name="workiservices"
+            id="worknservice"
+            name="worknservice"
+            onChange={changeWorknService}
+            value={worknservice}
           />
             </div>
             {/* <div className="doc__body__url col-3"></div> */}

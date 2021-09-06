@@ -258,6 +258,24 @@ p {
 .doc__bottom__right_sign {
   border-bottom: 1px solid $black;
 }
+
+.worknservice {
+  label {
+    display: none;
+    & + .MuiInput-formControl {
+      margin-top: 0 !important;
+    }
+  }
+  input {
+    background: $white;
+  }
+  .MuiInput-underline {
+    &:before {
+      border-bottom: 0;
+    }
+  }
+}
+
 @media (max-width: 575.98px) {
   .main__document {
     p {
