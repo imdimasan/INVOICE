@@ -41,8 +41,7 @@ const ClientsList = ({clients, user, getClients}) => {
      </tr>
      </thead>
      <tbody>
-     {clients.map ((client, index) => {
-       return (
+     {clients.map ((client, index) => (      
          <tr key={index}>
            <td>{index+1}</td>
            <td>{client.organization}</td>
@@ -50,9 +49,8 @@ const ClientsList = ({clients, user, getClients}) => {
            <td><IconButton aria-label="delete" dataset-id={client._id} onClick={()=>removeClient(client._id)} >
          <DeleteIcon />
        </IconButton></td>
-         </tr>
-       )
-     })}
+         </tr>     
+     ))}
      </tbody>
    </table>
 

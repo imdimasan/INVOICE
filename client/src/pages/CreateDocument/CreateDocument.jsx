@@ -113,7 +113,7 @@ function CreateDocument () {
 
       const element = document.getElementById("element-to-print");
       const opt = {
-        margin: 0.3,
+        margin: [0.1, 0.7],
         filename: `${clientinfo.unp}-${pdfDate}.pdf`,
         image: { type: "jpeg", quality: 1 },
         // html2canvas: { scale:1 },

@@ -15,6 +15,7 @@ p {
     font-size: 1.2rem;
     padding: 1rem;
     line-height: 1.5rem;
+    padding-bottom: 1rem;
   }
   strong {
     font-weight: 600;
@@ -189,6 +190,12 @@ p {
   color: $black !important;
 }
 
+.main__type {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 .main__document {
   background: $white;
   border: 1px solid $lightgray;
@@ -287,6 +294,7 @@ p {
     p {
       font-size: 0.8rem;
       padding: 0.5rem;
+      padding-bottom: 1rem;
     }
   }
   .head__logo {
@@ -303,6 +311,11 @@ p {
     overflow-x: auto;
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+  .main__buttons_btn {
+    span {
+      font-size: 1rem !important;
     }
   }
   .doc__header_logo {
