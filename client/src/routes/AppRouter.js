@@ -16,9 +16,6 @@ function AppRouter({ isAuthenticated }) {
     return (
       <>
         <Switch>
-          {/* <Route exact path={pageRoutes.HOME}>
-            <HomePage />
-          </Route> */}
           <Route exact path={pageRoutes.ADD}>
             <AddPage />
           </Route>
