@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, browserHistory } from "react-router-dom";
-// import { createBrowserHistory } from "history";
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
 import "assets/fonts/Montserrat/index.scss";
 import "assets/fonts/MontserratAlternates/index.scss";
 
-// const history = createBrowserHistory();
+const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router history={browserHistory}>
+  <Router history={history}>
     <App />
   </Router>,
   document.getElementById("root")
