@@ -3,11 +3,11 @@ const { Schema, model, Types } = require("mongoose");
 const schema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  organization: { type: String, required: true },
-  unp: { type: String, required: true, uniquie: true },
-  legaladdress: { type: String, required: true },
-  bankaccount: { type: String, required: true },
-  bankname: { type: String, required: true },
+  organization: { type: String },
+  unp: { type: String, uniquie: true },
+  legaladdress: { type: String },
+  bankaccount: { type: String },
+  bankname: { type: String },
   bic: { type: String },
   pro: { type: Boolean },
   links: [

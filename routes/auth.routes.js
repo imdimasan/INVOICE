@@ -66,6 +66,7 @@ router.post(
       res.status(201).json({ message: "[OK] Пользователь зарегистрирован" });
     } catch (error) {
       res.status(500).json({ message: "[ERR-00] Ошибка сервера ..." });
+      console.log(error);
     }
   }
 );
