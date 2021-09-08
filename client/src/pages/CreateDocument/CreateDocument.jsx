@@ -143,7 +143,7 @@ function CreateDocument () {
     <div className="wrapper">
         <div className="main__buttons">
         
-        {userInfo.pro? clients.map ((client, index) => {
+        {userInfo.pro || clients.length < 5 ? clients.map ((client, index) => {
             return (
                 <Buttons key={index} onClick={()=>fillClientInfo(client)} className="main__buttons_btn">{client.organization}</Buttons>
             ) 
@@ -155,7 +155,7 @@ function CreateDocument () {
       
    })}
 
-        {userInfo.pro? 
+        {userInfo.pro  || clients.length < 5? 
         <Buttons className="main__buttons_btn">
           <NavigationLink
             href={pageRoutes.ADD}
