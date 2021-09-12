@@ -47,7 +47,6 @@ if (loading) {
       <Text variant="h1" className="page__title">
         Account Clients Page
       </Text>
-      {/* {!loading && <LinksList links={links}/>} */}
       {!loading && <ClientList clients={clients} user={user} getClients={getClients}/>}
     </>
   );

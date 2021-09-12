@@ -1,8 +1,10 @@
-.signup__wrapper {
-  display: flex;
-  flex-direction: column;
-}
 .buttons__wrapper {
   display: flex;
   justify-content: center;
+}
+.regbtn {
+  font-family: "Montserrat";
+  display: block;
+  width: fit-content;
+  cursor: pointer;
 }

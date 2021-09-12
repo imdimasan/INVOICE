@@ -8,6 +8,7 @@ const schema = new Schema({
   legaladdress: { type: String },
   bankaccount: { type: String },
   bankname: { type: String },
+  phone: { type: Number },
   bic: { type: String },
   pro: { type: Boolean },
   links: [

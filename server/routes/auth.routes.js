@@ -33,6 +33,7 @@ router.post(
         email,
         password,
         organization,
+        phone,
         unp,
         bankaccount,
         bankname,
@@ -47,7 +48,7 @@ router.post(
       if (candidate) {
         return res
           .status(400)
-          .json({ usererr: "[ERR-01] Такой пользователь уже создан" });
+          .json({ message: "[ERR-01] Такой пользователь уже создан" });
       }
 
       // Создание пользователя в БД
@@ -55,6 +56,7 @@ router.post(
         email,
         password: hashedPassword,
         organization,
+        phone,
         unp,
         legaladdress,
         bankaccount,

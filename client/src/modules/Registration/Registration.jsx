@@ -1,80 +1,172 @@
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { Input, Buttons, Text } from "components";
 import { useState } from "react";
+import axios from "axios";
 import "./Registration.scss";
 
-function getSteps() {
-  return [
-    "Select master blaster campaign settings",
-    "Create an ad group",
-    "Create an ad",
-  ];
-}
-
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return "Select campaign settings...";
-    case 1:
-      return "What is an ad group anyways?";
-    case 2:
-      return "This is the bit I really care about!";
-    default:
-      return "Unknown stepIndex";
-  }
-}
-
 function Registration() {
-  const [activeStep, setActiveStep] = useState(0);
-  const steps = getSteps();
+  const [loginError, setLoginError] = useState();
+  const [passwordError, setPasswordError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [notice, setNotice] = useState("");
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const [registrationForm, setRegistrationForm] = useState({
+    email: "",
+    password: "",
+    organization: "",
+    phone: "",
+    unp: "",
+    legaladdress: "",
+    bankaccount: "",
+    bankname: "",
+    bic: "",
+    pro: false,
+  });
+
+  const changeRegistration = (event) => {
+    console.log(registrationForm);
+    setRegistrationForm({
+      ...registrationForm,
+      [event.target.name]: event.target.value,
+    });
+    if (event.target.name === "email") {
+      setLoginError();
+    } else if (event.target.name === "password") {
+      setPasswordError();
+    } else {
+    }
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  const registrationHandler = async () => {
+    await axios
+      .post("/api/auth/register", { ...registrationForm })
+      .then(function (response) {
+        console.log(response);
+        setNotice(response.data.message);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          setNotice(error.response.data.message);
 
-  const handleReset = () => {
-    setActiveStep(0);
+          if (error.response.data.errors) {
+            error.response.data.errors.forEach((el) => {
+              if (el.param === "email") {
+                setLoginError(el.msg);
+              } else if (el.param === "password") {
+                setPasswordError(el.msg);
+              } else {
+              }
+              console.log(el);
+            });
+          }
+        } else {
+          console.log("Error", error.message);
+        }
+      });
   };
 
   return (
-    <div>
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div className="registration__buttons__wrapper">
-            <Typography>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
-          </div>
-        ) : (
-          <div className="registration__buttons__wrapper">
-            <Typography>{getStepContent(activeStep)}</Typography>
-            <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className="btn"
-              >
-                Back
-              </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </div>
-          </div>
-        )}
+    <div className="signup__wrapper">
+      <Input
+        label="Email"
+        type="email"
+        id="emailreg"
+        name="email"
+        onChange={changeRegistration}
+        value={registrationForm.email}
+        helperText={loginError}
+        error={loginError}
+      />
+      <Input
+        label="Password"
+        type="password"
+        id="passwordreg"
+        name="password"
+        onChange={changeRegistration}
+        value={registrationForm.password}
+        error={passwordError}
+        helperText={passwordError}
+      />
+      <Input
+        label="Название организации"
+        type="text"
+        id="organization"
+        name="organization"
+        value={registrationForm.organization}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="УНП"
+        type="text"
+        required="true"
+        id="unp"
+        name="unp"
+        value={registrationForm.unp}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="Юридический адрес"
+        type="text"
+        id="legaladdress"
+        name="legaladdress"
+        value={registrationForm.legaladdress}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="Контактный телефон"
+        type="number"
+        id="phone"
+        name="phone"
+        value={registrationForm.phone}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="Название банка"
+        type="text"
+        id="bankname"
+        name="bankname"
+        value={registrationForm.bankname}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="Расчетный счет банка IBAN"
+        type="text"
+        id="bankaccount"
+        name="bankaccount"
+        value={registrationForm.bankaccount}
+        onChange={changeRegistration}
+      />
+      <Input
+        label="БИК"
+        type="text"
+        id="bic"
+        name="bic"
+        value={registrationForm.bic}
+        onChange={changeRegistration}
+      />
+      <div className="buttons__wrapper">
+        <Buttons
+          variant="outlined"
+          onClick={registrationHandler}
+          disabled={loading}
+        >
+          Registration
+        </Buttons>
+      </div>
+      <div
+        className={
+          notice ? "registration__notice active" : "registration__notice"
+        }
+      >
+        <Text variant="p">{notice ? notice : ""}</Text>
+        <div
+          className="close__btn"
+          onClick={() => {
+            setNotice("");
+          }}
+        >
+          X
+        </div>
       </div>
     </div>
   );
