@@ -3,7 +3,9 @@ import { pageRoutes } from "constants/pageRoutes";
 import { AuthContext } from "context/AuthContext";
 import { useContext } from "react";
 import { useHistory } from "react-router";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { ReactComponent as DocSvg } from "assets/icons/document.svg";
+import { ReactComponent as AddSvg } from "assets/icons/add.svg";
+import { ReactComponent as ClientsSvg } from "assets/icons/clients.svg";
 import "./Header.scss";
 
 function Header({ isAuthenticated }) {
@@ -22,14 +24,14 @@ function Header({ isAuthenticated }) {
       <div className="wrapper header">
         <div className="header__menu">
           <menu>
-
-          <li>
+            <li>
               <NavigationLink
                 href={pageRoutes.CREATE}
                 className={"header__menu__item"}
                 title={"Create document with one click"}
               >
-                Create Doc
+                <DocSvg />
+                Создать документ
               </NavigationLink>
             </li>
             <li>
@@ -38,7 +40,8 @@ function Header({ isAuthenticated }) {
                 className={"header__menu__item"}
                 title={"Go to Add Page"}
               >
-                Add client
+                <AddSvg />
+                Добавить клиента
               </NavigationLink>
             </li>
             <li>
@@ -47,15 +50,19 @@ function Header({ isAuthenticated }) {
                 className={"header__menu__item"}
                 title={"Go to Add Page"}
               >
-                My clients
+                <ClientsSvg />
+                Мои клиенты
               </NavigationLink>
             </li>
             <li>
-            <NavigationLink href="" className={"header__menu__item header__menu__logout"} onClick={logoutHandler}>
-            <ExitToAppIcon fontSize={"large"}/>
-          </NavigationLink>
+              <NavigationLink
+                href=""
+                className={"header__menu__item"}
+                onClick={logoutHandler}
+              >
+                Выйти
+              </NavigationLink>
             </li>
-            
           </menu>
         </div>
         {/* <div className="header__logout">

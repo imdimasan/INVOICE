@@ -11,6 +11,7 @@ import logo from "assets/images/qr-code.png";
 import logowebp from "assets/images/qr-code.svg";
 import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import html2pdf from "html2pdf.js";
+import axios from "axios";
 
 function CreateDocument() {
   const { loading, request, getting } = useHttp();
@@ -112,7 +113,7 @@ function CreateDocument() {
       margin: [0.1, 0.7],
       filename: `${clientinfo.unp}-${pdfDate}.pdf`,
       image: { type: "jpeg", quality: 1 },
-      // html2canvas: { scale:1 },
+      html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
     };
 
@@ -436,7 +437,7 @@ function CreateDocument() {
                 <br></br>
                 {clientinfo.legaladdress}
                 <br></br>
-                {clientinfo.unp}
+                УНП: {clientinfo.unp}
                 <br></br>
                 {clientinfo.bankaccount}
                 <br></br>
@@ -450,7 +451,9 @@ function CreateDocument() {
             <div className="doc__bottom__notice">
               <div className="doc__bottom__notice__content">
                 <p>
-                  {docType ? clientinfo.noticeact : clientinfo.noticeinvoice}
+                  {docType === "Акт выполненных работ"
+                    ? clientinfo.noticeact
+                    : clientinfo.noticeinvoice}
                 </p>
               </div>
             </div>

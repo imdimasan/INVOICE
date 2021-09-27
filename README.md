@@ -30,12 +30,24 @@ To start project enter to "server" folder and run using command "npm run dev"
 
 # NPM Install on client side
 
-For npm installation you should run script: npm run client:install
+For npm installation you should run script:
+
+```
+npm run client:install
+```
 
 # Build client static
 
-For build project you should run script: npm run client:build
+For build project you should run script:
+
+```
+npm run client:build
+```
 
 # Starting both server and client
 
-For starting project on hosting / server you should run script: npm run start
+For starting project on hosting / server you should run script:
+
+```
+npm run start
+```
