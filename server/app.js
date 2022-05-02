@@ -17,6 +17,7 @@ app.use("/api/link", LINKS);
 app.use("/api/client", CLIENTS);
 
 if (process.env.NODE_ENV === "production") {
+  console.log("NODE ENV PRODUCTION");
   app.use("/", express.static(path.join(__dirname, "..", "client", "build")));
   app.get("*", (req, res) => {
     res.sendFile(
@@ -33,7 +34,9 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
+    console.log("DB Connected");
   } catch (error) {
+    console.log("DB Error", error);
     process.exit(1);
   }
 }
@@ -43,4 +46,5 @@ start();
 
 app.listen(PORT, () => {
   console.log(`App has been started at port ${PORT}`);
+  console.log(`App has been started at process.env.NODE_ENV ${process.env.NODE_ENV}`);
 });

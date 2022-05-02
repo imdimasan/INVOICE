@@ -1,6 +1,6 @@
 {
     "port" : 8080,
     "secret" : "invoic imdimasan",
-    "baseUrl":"http://invoice.by",
+    "baseUrl":"https://invoice.by",
     "mongoUrl": "mongodb+srv://imdimasan:PRIVODmnev8opy@cluster0.xm8cm.mongodb.net/invoicedb?retryWrites=true&w=majority"
 }
